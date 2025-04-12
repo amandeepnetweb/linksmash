@@ -10,6 +10,8 @@ function App() {
   const [appName, setAppName] = useState("");
   const [error, setError] = useState("");
 
+  console.log("App component rendered");
+
   // Base URL for redirect page (update for production)
   const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
