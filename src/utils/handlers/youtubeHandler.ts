@@ -7,7 +7,7 @@ export const youtubeHandler: AppScheme = {
     {
       // https://www.youtube.com/watch?v=abc or youtu.be/abc
       regex:
-        /^https:\/\/(www\.)?youtube\.com\/watch\?v=[^&]+$|^https:\/\/(www\.)?youtu\.be\/[^/?#]+$/,
+        /^https:\/\/(www\.)?youtube\.com\/watch\?v=[^&]+(&[^#]*)?$|^https:\/\/(www\.)?youtu\.be\/[^/?#]+(\?.*)?$/,
       iosScheme: (match, url) => {
         const videoId = url.searchParams.get("v") || match[1];
         if (!videoId) throw new Error("Missing video ID");
