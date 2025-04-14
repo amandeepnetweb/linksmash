@@ -29,6 +29,13 @@ export const instagramHandler: AppScheme = {
         `intent://instagram.com/reel/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
     },
     {
+      // 🔊 Reels Audio Page
+      regex: /^\/reels\/audio\/([^/]+)\/?$/,
+      iosScheme: (match) => `https://www.instagram.com/reels/audio/${match[1]}`,
+      androidScheme: (match) =>
+        `intent://instagram.com/reels/audio/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
+    },
+    {
       // 📖 Story (only works if username has an active story)
       regex: /^\/stories\/([^/]+)\/(\d+)\/?$/,
       iosScheme: (match: RegExpMatchArray) =>
