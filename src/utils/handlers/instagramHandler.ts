@@ -15,21 +15,14 @@ export const instagramHandler: AppScheme = {
     {
       // 🎯 Post
       regex: /^\/p\/([^/]+)\/?$/,
-      iosScheme: (match: RegExpMatchArray) =>
-        `instagram://instagram.com/p/${match[1]}`,
-      // `instagram://media?id=${match[1]}`,
-      // iosScheme: (match: RegExpMatchArray) =>
-      //   `instagram://www.instagram.com/p/${match[1]}`,
+      iosScheme: (match: RegExpMatchArray) => `instagram://p/${match[1]}`,
       androidScheme: (match: RegExpMatchArray) =>
         `intent://instagram.com/p/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
     },
     {
       // 🎞️ Reels
       regex: /^\/reel\/([^/]+)\/?$/,
-      iosScheme: (match: RegExpMatchArray) =>
-        `instagram://instagram.com/reel/${match[1]}`,
-      // iosScheme: (match: RegExpMatchArray) =>
-      //   `instagram://www.instagram.com/reel/${match[1]}`,
+      iosScheme: (match: RegExpMatchArray) => `instagram://reel/${match[1]}`,
       androidScheme: (match: RegExpMatchArray) =>
         `intent://instagram.com/reel/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
     },
@@ -37,9 +30,7 @@ export const instagramHandler: AppScheme = {
       // 📖 Story (only works if username has an active story)
       regex: /^\/stories\/([^/]+)\/\d+\/?$/,
       iosScheme: (match: RegExpMatchArray) =>
-        `instagram://instagram.com/stories/${match[1]}`,
-      // iosScheme: (match: RegExpMatchArray) =>
-      //   `instagram://story-viewer?username=${match[1]}`,
+        `instagram://user?username=${match[1]}&story=1`,
       androidScheme: (match: RegExpMatchArray) =>
         `intent://instagram.com/stories/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
     },
