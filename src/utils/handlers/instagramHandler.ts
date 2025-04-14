@@ -26,7 +26,8 @@ export const instagramHandler: AppScheme = {
     {
       // 🎞️ Reels
       regex: /^\/reel\/([^/]+)\/?$/,
-      iosScheme: (match: RegExpMatchArray) => `instagram://reel?id=${match[1]}`,
+      iosScheme: (match: RegExpMatchArray) =>
+        `instagram://instagram.com/reel/${match[1]}`,
       // iosScheme: (match: RegExpMatchArray) =>
       //   `instagram://www.instagram.com/reel/${match[1]}`,
       androidScheme: (match: RegExpMatchArray) =>
