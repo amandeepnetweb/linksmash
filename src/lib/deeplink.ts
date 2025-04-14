@@ -1,6 +1,6 @@
 import { handlers } from "@/utils/handlers";
 
-const mapLinkToScheme = (universalLink: string) => {
+const resolveDeepLink = (universalLink: string) => {
   try {
     const url = new URL(universalLink);
     const hostname = url.hostname.toLowerCase();
@@ -32,4 +32,4 @@ const mapLinkToScheme = (universalLink: string) => {
   }
 };
 
-export { mapLinkToScheme };
+export { resolveDeepLink };

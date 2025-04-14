@@ -1,35 +1,39 @@
-import { AppLinkHandler } from "@/types/link-handlers";
+import { AppScheme } from "@/types/link-handlers";
 
-export const youtubeHandler: AppLinkHandler = {
+export const youtubeHandler: AppScheme = {
   name: "YouTube",
-  domains: ["youtube.com", "www.youtube.com"],
+  domains: ["www.youtube.com", "youtube.com", "youtu.be"],
   patterns: [
     {
-      regex: /^\/watch$/,
-      iosScheme: (_, url) => {
-        const videoId = url.searchParams.get("v");
+      // https://www.youtube.com/watch?v=abc or youtu.be/abc
+      regex: /^\/watch$|^\/([^/]+)$/,
+      iosScheme: (match, url) => {
+        const videoId = url.searchParams.get("v") || match[1];
         if (!videoId) throw new Error("Missing video ID");
         return `vnd.youtube://watch/${videoId}`;
       },
-      androidScheme: (_, url) => {
-        const videoId = url.searchParams.get("v");
+      androidScheme: (match, url) => {
+        const videoId = url.searchParams.get("v") || match[1];
         if (!videoId) throw new Error("Missing video ID");
         return `intent://watch?v=${videoId}#Intent;package=com.google.android.youtube;scheme=https;end`;
       },
     },
     {
+      // https://www.youtube.com/shorts/abc123
       regex: /^\/shorts\/([^/]+)/,
       iosScheme: (match) => `vnd.youtube://watch/${match[1]}`,
       androidScheme: (match) =>
         `intent://watch?v=${match[1]}#Intent;package=com.google.android.youtube;scheme=https;end`,
     },
     {
+      // https://www.youtube.com/channel/UCxxxx or /@username
       regex: /^\/(@[^/]+|channel\/[^/]+)$/,
       iosScheme: (match) => `vnd.youtube://${match[1]}`,
       androidScheme: (match) =>
         `intent://${match[1]}#Intent;package=com.google.android.youtube;scheme=https;end`,
     },
     {
+      // https://www.youtube.com/playlist?list=xxxx
       regex: /^\/playlist$/,
       iosScheme: (_, url) => {
         const playlistId = url.searchParams.get("list");

@@ -1,4 +1,4 @@
-import { AppLinkHandler } from "@/types/link-handlers";
+import { AppScheme } from "@/types/link-handlers";
 import { youtubeHandler } from "./youtubeHandler";
 
-export const handlers: AppLinkHandler[] = [youtubeHandler];
+export const handlers: AppScheme[] = [youtubeHandler];

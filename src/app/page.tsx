@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { mapLinkToScheme } from "@/lib/linkMapper";
+import { resolveDeepLink } from "@/lib/deeplink";
 
 function App() {
   const [universalLink, setUniversalLink] = useState("");
@@ -22,7 +22,7 @@ function App() {
     setScheme("");
     setAppName("");
 
-    const result = mapLinkToScheme(universalLink);
+    const result = resolveDeepLink(universalLink);
     if (result.error) {
       setError(result.error);
       return;
