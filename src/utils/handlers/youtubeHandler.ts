@@ -14,7 +14,8 @@ export const youtubeHandler: AppScheme = {
     {
       // 🎯 Channel (/channel/xyz or /@username)
       regex: /^\/(channel\/[^/]+|@[^/]+)$/,
-      iosScheme: (match) => `vnd.youtube://${match[1]}`,
+      // iosScheme: (match) => `vnd.youtube://channel/${match[1]}`,
+      iosScheme: (match) => `youtube://www.youtube.com/${match[1]}`,
       androidScheme: (match) =>
         `intent://${match[1]}#Intent;package=com.google.android.youtube;scheme=https;end`,
     },
