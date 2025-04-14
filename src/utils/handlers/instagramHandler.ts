@@ -5,11 +5,36 @@ export const instagramHandler: AppScheme = {
   domains: ["www.instagram.com", "instagram.com"],
   patterns: [
     {
-      // 🎯 Instagram Post (/p/postId)
+      // 🎯 Post
       regex: /^\/p\/([^/]+)\/?$/,
-      iosScheme: (match) => `instagram://www.instagram.com/p/${match[1]}`,
-      androidScheme: (match) =>
+      iosScheme: (match: RegExpMatchArray) =>
+        `instagram://www.instagram.com/p/${match[1]}`,
+      androidScheme: (match: RegExpMatchArray) =>
         `intent://instagram.com/p/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
+    },
+    {
+      // 🎞️ Reels
+      regex: /^\/reel\/([^/]+)\/?$/,
+      iosScheme: (match: RegExpMatchArray) =>
+        `instagram://www.instagram.com/reel/${match[1]}`,
+      androidScheme: (match: RegExpMatchArray) =>
+        `intent://instagram.com/reel/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
+    },
+    {
+      // 👤 Profile (@username)
+      regex: /^\/@?([^/]+)\/?$/,
+      iosScheme: (match: RegExpMatchArray) =>
+        `instagram://user?username=${match[1]}`,
+      androidScheme: (match: RegExpMatchArray) =>
+        `intent://instagram.com/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
+    },
+    {
+      // 📖 Story (only works if username has an active story)
+      regex: /^\/stories\/([^/]+)\/\d+\/?$/,
+      iosScheme: (match: RegExpMatchArray) =>
+        `instagram://story-viewer?username=${match[1]}`,
+      androidScheme: (match: RegExpMatchArray) =>
+        `intent://instagram.com/stories/${match[1]}#Intent;package=com.instagram.android;scheme=https;end`,
     },
   ],
 };
