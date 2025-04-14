@@ -13,6 +13,12 @@ function App() {
   // Base URL for redirect page (update for production)
   const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
+  // const deepLink = resolveDeepLink(
+  //   "https://www.youtube.com/playlist?list=PLRAV69dS1uWSjBBJ-egNNOd4mdblt1P4c",
+  //   "ios"
+  // );
+  // console.log({ deepLink });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");

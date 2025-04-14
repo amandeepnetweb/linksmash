@@ -1,13 +1,22 @@
 import { handlers } from "@/utils/handlers";
 
-const resolveDeepLink = (universalLink: string) => {
+const resolveDeepLink = (
+  universalLink: string,
+  overridePlatform?: "android" | "ios" | undefined
+) => {
   try {
     const url = new URL(universalLink);
     const hostname = url.hostname.toLowerCase();
     const pathname = url.pathname;
 
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS =
+      overridePlatform && overridePlatform === "ios"
+        ? true
+        : /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid =
+      overridePlatform && overridePlatform === "android"
+        ? true
+        : /Android/i.test(navigator.userAgent);
 
     for (const handler of handlers) {
       if (!handler.domains.includes(hostname)) continue;
