@@ -7,7 +7,7 @@ export const instagramHandler: AppScheme = {
     {
       // 🎯 Post
       regex: /^\/p\/([^/]+)\/?$/,
-      iosScheme: (match: RegExpMatchArray) => `instagram://p/${match[1]}`,
+      iosScheme: (match: RegExpMatchArray) => `instagram://media?id=${match[1]}`,
       // iosScheme: (match: RegExpMatchArray) =>
       //   `instagram://www.instagram.com/p/${match[1]}`,
       androidScheme: (match: RegExpMatchArray) =>
@@ -16,7 +16,7 @@ export const instagramHandler: AppScheme = {
     {
       // 🎞️ Reels
       regex: /^\/reel\/([^/]+)\/?$/,
-      iosScheme: (match: RegExpMatchArray) => `instagram://reel/${match[1]}`,
+      iosScheme: (match: RegExpMatchArray) => `instagram://media?id=${match[1]}`,
       // iosScheme: (match: RegExpMatchArray) =>
       //   `instagram://www.instagram.com/reel/${match[1]}`,
       androidScheme: (match: RegExpMatchArray) =>
