@@ -38,7 +38,7 @@ export const youtubeHandler: AppScheme = {
       iosScheme: (_, url) => {
         const playlistId = url.searchParams.get("list");
         if (!playlistId) throw new Error("Missing playlist ID");
-        return `vnd.youtube://playlist/${playlistId}`;
+        return `vnd.youtube://playlist?list=${playlistId}`;
       },
       androidScheme: (_, url) => {
         const playlistId = url.searchParams.get("list");
