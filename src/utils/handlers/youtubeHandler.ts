@@ -9,7 +9,7 @@ export const youtubeHandler: AppScheme = {
       regex: /^\/shorts\/([^/]+)/,
       iosScheme: (match) => `vnd.youtube://watch/${match[1]}`,
       androidScheme: (match) =>
-        `intent://watch?v=${match[1]}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https://www.youtube.com/watch?v=${match[1]};end`,
+        `intent://watch/${match[1]}#Intent;package=com.google.android.youtube;scheme=vnd.youtube;end`,
     },
     {
       // 🎯 Channel (/channel/xyz or /@username)
@@ -17,7 +17,7 @@ export const youtubeHandler: AppScheme = {
       // iosScheme: (match) => `vnd.youtube://channel/${match[1]}`,
       iosScheme: (match) => `youtube://www.youtube.com/${match[1]}`,
       androidScheme: (match) =>
-        `intent://${match[1]}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https://www.youtube.com/${match[1]};end`,
+        `intent://www.youtube.com/${match[1]}#Intent;package=com.google.android.youtube;scheme=vnd.youtube;end`,
     },
     {
       // 🎯 Playlist
@@ -30,7 +30,7 @@ export const youtubeHandler: AppScheme = {
       androidScheme: (_, url) => {
         const playlistId = url.searchParams.get("list");
         if (!playlistId) throw new Error("Missing playlist ID");
-        return `intent://playlist?list=${playlistId}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https://www.youtube.com/playlist?list=${playlistId};end`;
+        return `intent://playlist?list=${playlistId}#Intent;package=com.google.android.youtube;scheme=vnd.youtube;end`;
       },
     },
     {
@@ -44,7 +44,7 @@ export const youtubeHandler: AppScheme = {
       androidScheme: (_, url) => {
         const videoId = url.searchParams.get("v");
         if (!videoId) throw new Error("Missing video ID");
-        return `intent://watch?v=${videoId}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https://www.youtube.com/watch?v=${videoId};end`;
+        return `intent://watch/${videoId}#Intent;package=com.google.android.youtube;scheme=vnd.youtube;end`;
       },
     },
     {
@@ -72,7 +72,7 @@ export const youtubeHandler: AppScheme = {
         ) {
           throw new Error("Not a standard video link");
         }
-        return `intent://watch?v=${match[1]}#Intent;scheme=https;package=com.google.android.youtube;S.browser_fallback_url=https://youtu.be/${match[1]};end`;
+        return `intent://watch/${match[1]}#Intent;package=com.google.android.youtube;scheme=vnd.youtube;end`;
       },
     },
   ],
