@@ -23,7 +23,7 @@ export const twitterHandler: AppScheme = {
       regex: /^\/i\/communities\/(\d+)/,
       iosScheme: (match) => `https://x.com/i/communities/${match[1]}`,
       androidScheme: (match) =>
-        `intent://x.com/i/communities/${match[1]}#Intent;package=com.twitter.android;scheme=twitter;end`,
+        `intent://i/communities/${match[1]}#Intent;scheme=twitter;package=com.twitter.android;end`,
     },
   ],
 };
