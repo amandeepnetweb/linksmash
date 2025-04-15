@@ -5,22 +5,19 @@ export const linkedinHandler: AppScheme = {
   domains: ["linkedin.com", "www.linkedin.com"],
   patterns: [
     {
-      // 🎯 LinkedIn Shared Post: /posts/...activity-<id>...
-      regex: /^\/posts\/.*activity-(\d+)-[^/]+/,
-      iosScheme: (match) => `linkedin://activity/${match[1]}`,
-      androidScheme: (match) => `linkedin://activity/${match[1]}`,
+      // 👤 Profile (/in/username)
+      regex: /^\/in\/([^/]+)\/?$/,
+      iosScheme: (match) => `https://www.linkedin.com/in/${match[1]}`,
+      androidScheme: (match) =>
+        `intent://linkedin.com/in/${match[1]}#Intent;package=com.linkedin.android;scheme=https;end`,
     },
     {
-      // 🎯 LinkedIn Post (activity): /feed/update/urn:li:activity:<id>
-      regex: /^\/feed\/update\/urn:li:activity:(\d+)/,
-      iosScheme: (match) => `linkedin://activity/${match[1]}`,
-      androidScheme: (match) => `linkedin://activity/${match[1]}`,
-    },
-    {
-      // 🎯 LinkedIn Profile: /in/<username>
-      regex: /^\/in\/([^/]+)/,
-      iosScheme: (match) => `linkedin://profile/${match[1]}`,
-      androidScheme: (match) => `linkedin://profile/${match[1]}`,
+      // 📬 LinkedIn Post (/posts/...activity-12345)
+      regex: /^\/posts\/[^/]*activity-(\d+)[^/]*\/?$/,
+      iosScheme: (match) =>
+        `https://www.linkedin.com/feed/update/urn:li:activity:${match[1]}`,
+      androidScheme: (match) =>
+        `intent://linkedin.com/feed/update/urn:li:activity:${match[1]}#Intent;package=com.linkedin.android;scheme=https;end`,
     },
   ],
 };
