@@ -30,5 +30,15 @@ export const googleMapsHandler: AppScheme = {
       androidScheme: (match) =>
         `intent://maps/search/${match[1]}#Intent;package=com.google.android.apps.maps;scheme=https;end`,
     },
+    {
+      // 🧭 Directions with from/to segments
+      regex: /^\/maps\/dir\/([^/]+)\/([^/?]+)/,
+      iosScheme: (match) =>
+        `comgooglemaps://?saddr=${decodeURIComponent(
+          match[1]
+        )}&daddr=${decodeURIComponent(match[2])}`,
+      androidScheme: (match) =>
+        `intent://maps/dir/${match[1]}/${match[2]}#Intent;package=com.google.android.apps.maps;scheme=https;end`,
+    },
   ],
 };
