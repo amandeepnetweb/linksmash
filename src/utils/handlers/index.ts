@@ -5,6 +5,7 @@ import { twitterHandler } from "./twitterHandler";
 import { linkedinHandler } from "./linkedinHandler";
 import { spotifyHandler } from "./spotifyHandler";
 import { googleMapsHandler } from "./googleMapsHandler";
+import { quoraHandler } from "./quoraHandler";
 
 export const handlers: AppScheme[] = [
   youtubeHandler,
@@ -13,4 +14,5 @@ export const handlers: AppScheme[] = [
   linkedinHandler,
   spotifyHandler,
   googleMapsHandler,
+  quoraHandler,
 ];

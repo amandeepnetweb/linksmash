@@ -46,8 +46,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] Amazon
 - [ ] Discord
 - [x] Google Maps
-- [ ] Apple Maps
 - [ ] Zomato
 - [ ] Swiggy
 - [ ] Threads
-- [ ] Quora
+- [x] Quora
