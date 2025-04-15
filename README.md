@@ -45,7 +45,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] Flipkart
 - [ ] Amazon
 - [ ] Discord
-- [ ] Google Maps
+- [x] Google Maps
 - [ ] Apple Maps
 - [ ] Zomato
 - [ ] Swiggy
