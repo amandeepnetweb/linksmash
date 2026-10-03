@@ -40,13 +40,23 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] Youtube
 - [x] Instagram
 - [x] Spotify
-- [ ] Linkedin
+- [x] Linkedin
 - [x] Twitter
-- [ ] Flipkart
-- [ ] Amazon
-- [ ] Discord
+- [x] Flipkart
+- [x] Amazon
+- [x] Discord
 - [x] Google Maps
-- [ ] Zomato
-- [ ] Swiggy
-- [ ] Threads
+- [x] Zomato
+- [x] Swiggy
+- [x] Threads
 - [x] Quora
+- [x] Whatsapp
+- [x] Telegram
+- [x] Reddit
+- [x] Snapchat
+- [x] Twitch
+- [x] Airbnb
+- [x] Netflix
+- [x] Hotstar
+- [x] Myntra
+- [x] Zepto
